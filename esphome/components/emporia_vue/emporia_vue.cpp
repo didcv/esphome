@@ -121,6 +121,7 @@ void CTClampConfig::update_from_reading(const SensorReading &sensor_reading) {
   }
   if (this->current_sensor_) {
     uint16_t raw_current = sensor_reading.current[this->input_port_];
+/*
     double raw_current_d = (double) raw_current;
     double scalar;
     if (this->input_port_ <= CTInputPort::C) {
@@ -129,6 +130,8 @@ void CTClampConfig::update_from_reading(const SensorReading &sensor_reading) {
       scalar = 775.0 / 170496.0;
     }
     this->current_sensor_->publish_state(raw_current_d * scalar);
+*/
+this->current_sensor_->publish_state(raw_current);
   }
 }
 
