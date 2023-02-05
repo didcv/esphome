@@ -126,9 +126,7 @@ void CTClampConfig::update_from_reading(const SensorReading &sensor_reading) {
     if (this->input_port_ <= CTInputPort::C) {
       scalar = 775.0 / 42624.0;
     } else {
-      //scalar = 775.0 / 170496.0;
-      scalar = 775.0 / 42624.0;
-
+      scalar = 775.0 / 170496.0;
     }
     this->current_sensor_->publish_state(raw_current_d * scalar);
   }
@@ -138,7 +136,6 @@ float CTClampConfig::get_calibrated_power(int32_t raw_power) const {
   float calibration = this->phase_->get_calibration();
 
   float correction_factor = (this->input_port_ < 3) ? 5.5 : 22;
-
   return (raw_power * calibration) / correction_factor;
 }
 
